@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmgml7jj0h1gv"]
+[gd_scene load_steps=12 format=3 uid="uid://dmgml7jj0h1gv"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_8tsqp"]
 [ext_resource type="Texture2D" uid="uid://dfkmclk63luf4" path="res://addons/kenney_prototype_textures/orange/texture_02.png" id="1_k6iht"]
 [ext_resource type="PackedScene" uid="uid://cfpcbdm6axxd6" path="res://prefabs/delivery_truck.tscn" id="1_xphiy"]
 
@@ -21,7 +22,13 @@ size = Vector2(200, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_xa683"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vebax"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2a0by"]
+
 [node name="GameWorld" type="Node3D"]
+script = ExtResource("1_8tsqp")
 
 [node name="FX" type="Node3D" parent="."]
 
@@ -31,20 +38,20 @@ transform = Transform3D(1, 0, 0, 0, 0.194491, 0.980904, 0, -0.980904, 0.194491, 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="FX"]
 environment = SubResource("Environment_6du43")
 
-[node name="ground" type="CSGMesh3D" parent="."]
+[node name="ground" type="CSGMesh3D" parent="." groups=["no_damage"]]
 material_override = SubResource("StandardMaterial3D_w7gun")
 use_collision = true
 mesh = SubResource("PlaneMesh_rt45k")
 
-[node name="ground2" type="CSGMesh3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3398, 0.633095, -0.64625)
-use_collision = true
-mesh = SubResource("BoxMesh_xa683")
 
-[node name="ground3" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4141, 0.633095, 23.0797)
-use_collision = true
+[node name="ground2" type="CSGMesh3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_xa683")
+material = SubResource("StandardMaterial3D_vebax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_2a0by")
 
 [node name="ground4" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2228, 0.633095, 23.0797)
@@ -75,5 +82,4 @@ mesh = SubResource("BoxMesh_xa683")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80628, 0)
 mass = 100.0
 center_of_mass = Vector3(0, 0.2, 0)
-brake_force = 4.0
 steer_speed = 3.0

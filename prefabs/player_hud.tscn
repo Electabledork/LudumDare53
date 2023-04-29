@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd6cfxwutjx5d"]
+
+[ext_resource type="Script" path="res://scripts/ui/player_hud.gd" id="1_wiwxi"]
+
+[node name="PlayerHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wiwxi")
+
+[node name="HPBKG" type="ColorRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_right = 415.0
+offset_bottom = 25.0
+color = Color(0.631373, 0, 0, 1)
+
+[node name="HPFILL" type="ColorRect" parent="HPBKG"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.764706, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_top = 42.0
+offset_right = 270.0
+offset_bottom = 83.0
+text = "Deliveries: "
+vertical_alignment = 1
+
+[node name="delivery_hint" type="Label" parent="."]
+layout_mode = 2
+offset_left = 470.0
+offset_top = 507.0
+offset_right = 682.0
+offset_bottom = 533.0
+text = "Press [E] to Deliver Package"
+horizontal_alignment = 1
+vertical_alignment = 1
