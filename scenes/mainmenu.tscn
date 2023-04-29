@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgogalh730nr1"]
+
+[ext_resource type="Script" path="res://scripts/ui/mainmenu.gd" id="1_uambj"]
+
+[node name="mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uambj")
+
+[node name="center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="vbox" type="VBoxContainer" parent="center"]
+layout_mode = 2
+
+[node name="playbutton" type="Button" parent="center/vbox"]
+layout_mode = 2
+text = "Play"
+
+[node name="exitbutton" type="Button" parent="center/vbox"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="center/vbox/playbutton" to="." method="_on_playbutton_pressed"]
+[connection signal="pressed" from="center/vbox/exitbutton" to="." method="_on_exitbutton_pressed"]
