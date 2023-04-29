@@ -187,7 +187,7 @@ emission_shape = 1
 emission_sphere_radius = 0.5
 direction = Vector3(0, 0, 0)
 spread = 53.54
-gravity = Vector3(0, 2, 0)
+gravity = Vector3(0, 4, 0)
 angle_max = 360.0
 scale_min = 0.0
 scale_curve = SubResource("CurveTexture_j5v32")
@@ -202,8 +202,8 @@ contact_monitor = true
 freeze_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_8kdf2")
-brake_force = 4.0
-steer_speed = 1.5
+steer_speed = 2.5
+decel_rate = 0.75
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.47804, 0)

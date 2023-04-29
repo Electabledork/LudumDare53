@@ -3,6 +3,7 @@ extends VehicleBody3D
 @export_category("Driving")
 @export var horse_power = 200.0
 @export var brake_force = 5.0
+@export var handbrake_multiplier = 6.0
 @export var steer_speed = 5.0
 @export var decel_rate = 0.5
 
@@ -22,6 +23,7 @@ var speed = 0
 @export var max_health = 100
 var health = max_health
 var can_take_damage = true
+var is_alive = true
 
 var delivery_location = null
 var can_deliver = false
@@ -35,11 +37,13 @@ func _process(delta):
 	elif health <= 25:
 		$EngineSmoke.amount = 100
 	elif health <= 0:
-		print("Truck Dead")
+		die()
 	else:
 		$EngineSmoke.emitting = false
 		
 func _unhandled_input(event):
+	if !is_alive: return
+	
 	if event.is_action_pressed("interact"):
 		if can_deliver && speed <= 1.0:
 			var delivered = game_manager.deliver(delivery_location)
@@ -50,6 +54,7 @@ func _unhandled_input(event):
 		pass
 
 func _physics_process(delta):
+	if !is_alive: return
 	speed = linear_velocity.length()
 	
 	if Input.is_action_pressed("accelerator"):
@@ -66,6 +71,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("brake"):
 		if engine_force > 0:
 			brake_val = 1
+			throttle_val =  move_toward(throttle_val, 0, delta * 3)
 		else:
 			reverse = true
 			throttle_val =  move_toward(throttle_val, -0.25, delta)
@@ -74,9 +80,10 @@ func _physics_process(delta):
 		reverse = false
 	
 	if Input.is_action_pressed("handbrake"):
-		$BackRight.wheel_friction_slip = 0.3
-		$BackLeft.wheel_friction_slip = 0.3
-		brake_val = 5
+		$BackRight.wheel_friction_slip = 0.6
+		$BackLeft.wheel_friction_slip = 0.6
+		brake_val = brake_force * handbrake_multiplier   
+		throttle_val = 0
 	else:
 		$BackRight.wheel_friction_slip = 2
 		$BackLeft.wheel_friction_slip = 2
@@ -108,6 +115,12 @@ func set_delivery(location):
 func clear_delivery():
 	delivery_location = null
 	can_deliver = false
+	
+func die():
+	is_alive = false
+	clear_delivery()
+	stop_smoke()
+	$EngineSmoke.emitting = false
 
 func _on_body_entered(body):
 	if(get_tree().get_nodes_in_group("no_damage").has(body)): return

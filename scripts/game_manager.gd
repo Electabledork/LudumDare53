@@ -9,6 +9,7 @@ func _ready():
 	generate_deliveries()
 
 func generate_deliveries():
+	var possible_locations = $buildings.get_children()
 	for i in number_of_deliveries:
 		var inst = delivery_loc_prefab.instantiate()
 		inst.position = Vector3(randf_range(-100, 100), 0, randf_range(-100, 100))
