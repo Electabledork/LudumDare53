@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmgml7jj0h1gv"]
+
+[ext_resource type="Texture2D" uid="uid://dfkmclk63luf4" path="res://addons/kenney_prototype_textures/orange/texture_02.png" id="1_k6iht"]
+[ext_resource type="PackedScene" uid="uid://cfpcbdm6axxd6" path="res://prefabs/delivery_truck.tscn" id="1_xphiy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c1dse"]
+
+[sub_resource type="Sky" id="Sky_3efu5"]
+sky_material = SubResource("ProceduralSkyMaterial_c1dse")
+
+[sub_resource type="Environment" id="Environment_6du43"]
+background_mode = 2
+sky = SubResource("Sky_3efu5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7gun"]
+albedo_texture = ExtResource("1_k6iht")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rt45k"]
+size = Vector2(200, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xa683"]
+
+[node name="GameWorld" type="Node3D"]
+
+[node name="FX" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="FX"]
+transform = Transform3D(1, 0, 0, 0, 0.194491, 0.980904, 0, -0.980904, 0.194491, 0, 0.327941, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="FX"]
+environment = SubResource("Environment_6du43")
+
+[node name="ground" type="CSGMesh3D" parent="."]
+material_override = SubResource("StandardMaterial3D_w7gun")
+use_collision = true
+mesh = SubResource("PlaneMesh_rt45k")
+
+[node name="ground2" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3398, 0.633095, -0.64625)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground3" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4141, 0.633095, 23.0797)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground4" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2228, 0.633095, 23.0797)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground5" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2228, 0.633095, -19.6565)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground6" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.4297, 0.633095, -19.6565)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground7" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.4297, 0.633095, 3.97199)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="ground8" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.4297, 0.633095, 14.1997)
+use_collision = true
+mesh = SubResource("BoxMesh_xa683")
+
+[node name="VehicleBody3D" parent="." instance=ExtResource("1_xphiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80628, 0)
+mass = 100.0
+center_of_mass = Vector3(0, 0.2, 0)
+brake_force = 4.0
+steer_speed = 3.0
