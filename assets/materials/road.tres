@@ -1,7 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b0rtd6mp42q7f"]
 
-[ext_resource type="Texture2D" uid="uid://cfhgop85u4u40" path="res://assets/textures/aap-64.png" id="1_i6csg"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3leon"]
+load_path = "res://.godot/imported/aap-64.png-62624d5c1f0faa409dc880953553fb45.s3tc.ctex"
 
 [resource]
 cull_mode = 2
-albedo_texture = ExtResource("1_i6csg")
+albedo_texture = SubResource("CompressedTexture2D_3leon")

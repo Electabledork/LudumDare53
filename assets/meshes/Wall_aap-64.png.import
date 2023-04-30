@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4fbohuimpet8"
-path.s3tc="res://.godot/imported/map_aap-64.png-0b71d011039bc233b2711ad0c5d01839.s3tc.ctex"
+uid="uid://ciouhliksh2yd"
+path.s3tc="res://.godot/imported/Wall_aap-64.png-0e4bd3398c7593087ca36a8384c8bbb4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/meshes/map_aap-64.png"
-dest_files=["res://.godot/imported/map_aap-64.png-0b71d011039bc233b2711ad0c5d01839.s3tc.ctex"]
+source_file="res://assets/meshes/Wall_aap-64.png"
+dest_files=["res://.godot/imported/Wall_aap-64.png-0e4bd3398c7593087ca36a8384c8bbb4.s3tc.ctex"]
 
 [params]
 

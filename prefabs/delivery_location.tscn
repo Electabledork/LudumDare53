@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu6p8h5ne33df"]
+[gd_scene load_steps=8 format=3 uid="uid://bu6p8h5ne33df"]
 
 [ext_resource type="Script" path="res://scripts/delivery_location.gd" id="1_6h08x"]
+[ext_resource type="Texture2D" uid="uid://cbulm4cwmf1xm" path="res://assets/ui/delivery_map_loc.png" id="2_0ijm8"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_roe1d"]
 top_radius = 3.0
@@ -16,18 +17,34 @@ metallic_specular = 0.0
 height = 5.0
 radius = 3.0
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_bqr3e"]
+size = Vector2(30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwvt0"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("2_0ijm8")
+emission_enabled = true
+emission = Color(0.0862745, 1, 0, 1)
+emission_energy_multiplier = 16.0
+
 [node name="DeliveryLocation" type="Area3D"]
 priority = 1.0
 script = ExtResource("1_6h08x")
 
 [node name="Marker" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.27277, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.27277, 0)
 mesh = SubResource("CylinderMesh_roe1d")
 material = SubResource("StandardMaterial3D_qicsj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 shape = SubResource("CylinderShape3D_f12dp")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 900, 0)
+mesh = SubResource("PlaneMesh_bqr3e")
+material = SubResource("StandardMaterial3D_uwvt0")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]

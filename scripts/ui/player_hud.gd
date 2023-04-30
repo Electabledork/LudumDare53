@@ -4,6 +4,8 @@ extends Control
 @onready var player = $"../../.."
 @onready var game_manager = $"../../../.."
 
+var speed_max_rot = 253
+
 func _ready():
 	$delivery_hint.hide()
 
@@ -17,3 +19,5 @@ func _process(delta):
 		$delivery_hint.show()
 	else:
 		$delivery_hint.hide()
+		
+	$speedometer/needle.rotation_degrees = player.speed / 40 * speed_max_rot

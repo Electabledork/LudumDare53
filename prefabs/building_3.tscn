@@ -64,9 +64,13 @@ script = ExtResource("1_jwqd6")
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 15, 0, 0, 0, 10, 0, 21, 0)
+layers = 4
 mesh = SubResource("ArrayMesh_2wiao")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
 shape = SubResource("BoxShape3D_e28pw")
+
+[node name="DeliveryLocation" type="Marker3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 15, 0, 0, 0, 10, 0, 0, -16)

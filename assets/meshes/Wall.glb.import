@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://377kgwhkgq6x"
-path="res://.godot/imported/truck.glb-e7a5a6b19ddbe1edca02db651ba9a965.scn"
+uid="uid://cmsd1p56hpilr"
+path="res://.godot/imported/Wall.glb-c500ba5525ee0f6670a6d176d1415241.scn"
 
 [deps]
 
-source_file="res://assets/meshes/truck.glb"
-dest_files=["res://.godot/imported/truck.glb-e7a5a6b19ddbe1edca02db651ba9a965.scn"]
+source_file="res://assets/meshes/Wall.glb"
+dest_files=["res://.godot/imported/Wall.glb-c500ba5525ee0f6670a6d176d1415241.scn"]
 
 [params]
 
@@ -28,12 +28,5 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/path": "res://assets/materials/truck.tres"
-}
-}
-}
-gltf/embedded_image_handling=0
+_subresources={}
+gltf/embedded_image_handling=1

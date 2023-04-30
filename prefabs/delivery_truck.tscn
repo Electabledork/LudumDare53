@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfpcbdm6axxd6"]
+[gd_scene load_steps=33 format=3 uid="uid://cfpcbdm6axxd6"]
 
 [ext_resource type="Script" path="res://scripts/delivery_truck.gd" id="1_8kdf2"]
-[ext_resource type="Texture2D" uid="uid://cbygh5881u5i4" path="res://assets/textures/smoke.png" id="2_1f3s2"]
 [ext_resource type="Material" uid="uid://cuj77qtkacxbg" path="res://assets/materials/truck.tres" id="2_d851w"]
 [ext_resource type="Script" path="res://scripts/smooth_camera.gd" id="2_jabso"]
 [ext_resource type="PackedScene" uid="uid://dd6cfxwutjx5d" path="res://prefabs/player_hud.tscn" id="3_vpekn"]
+[ext_resource type="Texture2D" uid="uid://cgmomu2wewcr7" path="res://assets/ui/player_map_loc.png" id="6_yj4le"]
+[ext_resource type="AudioStream" uid="uid://cx58saoaiplii" path="res://assets/sounds/Engine.wav" id="7_21i1w"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuh0k"]
 points = PackedVector3Array(-1, -0.0593406, 2.57596, 1, -0.0593406, 2.57596, -1, 0.136998, 2.70687, -1, -0.0426095, -2.17527, 1, 0.136998, 2.70687, 1, -0.0426095, -2.17527, -0.994518, 0.499036, 2.74077, -1, 0.999962, 2.03669, -1, -7.60965e-05, -2.46629, 0.994323, 0.499036, 2.74077, 1, 0.999962, 2.03669, 1, -7.60965e-05, -2.46629, -0.989037, 0.860872, 2.63594, -1, 2, 0.999869, -0.920125, 0.159172, -2.58677, -1, 2, -2.46629, 0.988841, 0.860872, 2.63594, 1, 2, 0.999869, 0.91993, 0.159172, -2.58677, 1, 2, -2.46629, -0.920125, 1.93146, -2.58677, 0.91993, 1.93146, -2.58677)
@@ -141,19 +142,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5kalm")
 
-[sub_resource type="Gradient" id="Gradient_e1woc"]
+[sub_resource type="Gradient" id="Gradient_70ktb"]
 offsets = PackedFloat32Array(0, 0.772358)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xoqfo"]
-gradient = SubResource("Gradient_e1woc")
+gradient = SubResource("Gradient_70ktb")
 
-[sub_resource type="Curve" id="Curve_6w74p"]
+[sub_resource type="Curve" id="Curve_08b1r"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_j5v32"]
-curve = SubResource("Curve_6w74p")
+curve = SubResource("Curve_08b1r")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtq5g"]
 lifetime_randomness = 0.1
@@ -167,19 +168,36 @@ scale_min = 0.0
 scale_curve = SubResource("CurveTexture_j5v32")
 color_ramp = SubResource("GradientTexture1D_xoqfo")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ek78"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ilc6g"]
+load_path = "res://.godot/imported/smoke.png-31c73da528b34b80f88eaacaca14fecb.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coecf"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_1f3s2")
+albedo_texture = SubResource("CompressedTexture2D_ilc6g")
 billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bcwa4"]
-material = SubResource("StandardMaterial3D_2ek78")
+material = SubResource("StandardMaterial3D_coecf")
 size = Vector2(1, 1)
 orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_e1woc"]
+offsets = PackedFloat32Array(0, 0.772358)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5l38b"]
+gradient = SubResource("Gradient_e1woc")
+
+[sub_resource type="Curve" id="Curve_6w74p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_aacwf"]
+curve = SubResource("Curve_6w74p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eomiy"]
 lifetime_randomness = 0.1
@@ -190,8 +208,19 @@ spread = 53.54
 gravity = Vector3(0, 4, 0)
 angle_max = 360.0
 scale_min = 0.0
-scale_curve = SubResource("CurveTexture_j5v32")
-color_ramp = SubResource("GradientTexture1D_xoqfo")
+scale_curve = SubResource("CurveTexture_aacwf")
+color_ramp = SubResource("GradientTexture1D_5l38b")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0fc0x"]
+size = Vector2(30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0pe7"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("6_yj4le")
+emission_enabled = true
+emission = Color(0.94902, 0, 0, 1)
+emission_energy_multiplier = 16.0
 
 [node name="DeliveryTruck" type="VehicleBody3D" groups=["player"]]
 mass = 12000.0
@@ -204,27 +233,35 @@ angular_damp = 5.0
 script = ExtResource("1_8kdf2")
 steer_speed = 2.5
 decel_rate = 0.75
+crash_damage_modifier = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.47804, 0)
 shape = SubResource("ConvexPolygonShape3D_tuh0k")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="CollisionShape3D"]
+estimate_radius = false
+radius = 100.0
 
 [node name="truck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.478, 0)
 
 [node name="Body" type="MeshInstance3D" parent="truck"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+layers = 2
 material_override = ExtResource("2_d851w")
 mesh = SubResource("ArrayMesh_6wxlt")
 skeleton = NodePath("")
 
 [node name="BackDoorLeft" type="MeshInstance3D" parent="truck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0414, 2.5073)
+layers = 2
 mesh = SubResource("ArrayMesh_47j68")
 skeleton = NodePath("")
 
 [node name="BackDoorRight" type="MeshInstance3D" parent="truck"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0414, 2.5073)
+layers = 2
 mesh = SubResource("ArrayMesh_wfn75")
 skeleton = NodePath("")
 
@@ -236,6 +273,7 @@ spring_length = 10.0
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 4.47035e-08, 1, 0, 4.76837e-07, 6.72)
 top_level = true
+doppler_tracking = 1
 current = true
 script = ExtResource("2_jabso")
 
@@ -255,6 +293,7 @@ damping_relaxation = 0.12
 
 [node name="Wheel" type="MeshInstance3D" parent="FrontLeft"]
 transform = Transform3D(-2.13355e-08, 0.488099, 0, -0.488099, -2.13355e-08, 0, 0, 0, 0.488099, 0, 0, 0)
+layers = 2
 material_override = ExtResource("2_d851w")
 mesh = SubResource("ArrayMesh_xx5ee")
 skeleton = NodePath("")
@@ -273,6 +312,7 @@ damping_relaxation = 0.12
 
 [node name="Wheel" type="MeshInstance3D" parent="BackLeft"]
 transform = Transform3D(-2.13355e-08, 0.488099, 0, -0.488099, -2.13355e-08, 0, 0, 0, 0.488099, 0, 0, 0)
+layers = 2
 material_override = ExtResource("2_d851w")
 mesh = SubResource("ArrayMesh_xx5ee")
 skeleton = NodePath("")
@@ -291,6 +331,7 @@ damping_relaxation = 0.12
 
 [node name="Wheel" type="MeshInstance3D" parent="FrontRight"]
 transform = Transform3D(-2.13355e-08, -0.488099, 0, 0.488099, -2.13355e-08, 0, 0, 0, 0.488099, 0, 0, 0)
+layers = 2
 material_override = ExtResource("2_d851w")
 mesh = SubResource("ArrayMesh_xx5ee")
 skeleton = NodePath("")
@@ -309,6 +350,7 @@ damping_relaxation = 0.12
 
 [node name="Wheel" type="MeshInstance3D" parent="BackRight"]
 transform = Transform3D(-2.13355e-08, -0.488099, 0, 0.488099, -2.13355e-08, 0, 0, 0, 0.488099, 0, 0, 0)
+layers = 2
 material_override = ExtResource("2_d851w")
 mesh = SubResource("ArrayMesh_xx5ee")
 skeleton = NodePath("")
@@ -346,7 +388,19 @@ process_material = SubResource("ParticleProcessMaterial_eomiy")
 draw_pass_1 = SubResource("PlaneMesh_bcwa4")
 
 [node name="DamageTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 900, 0)
+top_level = true
+mesh = SubResource("PlaneMesh_0fc0x")
+material = SubResource("StandardMaterial3D_m0pe7")
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_21i1w")
+volume_db = -5.0
+pitch_scale = 0.4
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

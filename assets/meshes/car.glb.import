@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://377kgwhkgq6x"
-path="res://.godot/imported/truck.glb-e7a5a6b19ddbe1edca02db651ba9a965.scn"
+uid="uid://bxkhsj71yh6ms"
+path="res://.godot/imported/car.glb-aa84f75309d547c265abc367fae9208b.scn"
 
 [deps]
 
-source_file="res://assets/meshes/truck.glb"
-dest_files=["res://.godot/imported/truck.glb-e7a5a6b19ddbe1edca02db651ba9a965.scn"]
+source_file="res://assets/meshes/car.glb"
+dest_files=["res://.godot/imported/car.glb-aa84f75309d547c265abc367fae9208b.scn"]
 
 [params]
 
@@ -30,7 +30,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material": {
+"Palette": {
 "use_external/enabled": true,
 "use_external/path": "res://assets/materials/truck.tres"
 }

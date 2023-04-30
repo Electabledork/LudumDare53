@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvi5o8ipq7u85"]
+[gd_scene load_steps=12 format=3 uid="uid://bvi5o8ipq7u85"]
 
-[ext_resource type="Texture2D" uid="uid://dfgemu28je2or" path="res://assets/meshes/road_aap-64.png" id="1_8lavy"]
+[ext_resource type="Texture2D" uid="uid://datsppqy7iblr" path="res://assets/meshes/road_aap-64.png" id="1_8lavy"]
 [ext_resource type="Material" uid="uid://b0rtd6mp42q7f" path="res://assets/materials/road.tres" id="2_rk7fg"]
+[ext_resource type="Texture2D" uid="uid://binoccbgekhp7" path="res://assets/meshes/road_Nav_aap-64.png" id="3_hthxq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcpgk"]
 resource_name = "Material"
@@ -40,13 +41,49 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_a5q7a")
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_s6233"]
-vertices = PackedVector3Array(1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 0.75, 1, 1, 0.75, 1, -1, 0.75, 0.246288, -1, 0, 0.246288, 1, 0, 0.246288, -1, 0.75, 0.246288, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -0.75, 1, 1, -0.75, 1, -1, -0.75, 0.246288, -1, -0.75, 0.246288, 1)
-polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1), PackedInt32Array(2, 4, 5), PackedInt32Array(2, 1, 4), PackedInt32Array(6, 7, 8), PackedInt32Array(6, 9, 7), PackedInt32Array(4, 6, 5), PackedInt32Array(4, 9, 6), PackedInt32Array(10, 11, 12), PackedInt32Array(10, 13, 11), PackedInt32Array(13, 14, 11), PackedInt32Array(13, 15, 14), PackedInt32Array(16, 7, 17), PackedInt32Array(16, 8, 7), PackedInt32Array(14, 16, 17), PackedInt32Array(14, 15, 16)]
-detail_sample_max_error = 10.0
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ghv08"]
 data = PackedVector3Array(1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 0.75, 1, 1, 0.75, 1, -1, 1, 1, -1, 1, 1, 1, 0.75, 1, 1, 0.75, 0.2463, -1, 0, 0.2463, 1, 0, 0.2463, -1, 0.75, 0.2463, -1, 0.75, 0.2463, 1, 0, 0.2463, 1, 0.75, 1, 1, 0.75, 0.2463, -1, 0.75, 1, -1, 0.75, 1, 1, 0.75, 0.2463, 1, 0.75, 0.2463, -1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -0.75, 1, 1, -1, 1, 1, -1, 1, -1, -0.75, 1, -1, -0.75, 1, 1, -0.75, 0.2463, -1, 0, 0.2463, 1, -0.75, 0.2463, 1, -0.75, 0.2463, -1, 0, 0.2463, -1, 0, 0.2463, 1, -0.75, 1, 1, -0.75, 0.2463, -1, -0.75, 0.2463, 1, -0.75, 1, 1, -0.75, 1, -1, -0.75, 0.2463, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_fylxr"]
+vertices = PackedVector3Array(-0.24, 0.246288, -1, -0.42, 0.246288, -1, -0.42, 0.246288, 1, -0.24, 0.246288, 1, 0.24, 0.246288, -1, 0.42, 0.246288, -1, 0.42, 0.246288, 1, 0.24, 0.246288, 1)
+polygons = [PackedInt32Array(1, 3, 2), PackedInt32Array(1, 0, 3), PackedInt32Array(5, 7, 4), PackedInt32Array(5, 6, 7)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhgis"]
+resource_name = "Material"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_hthxq")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_42aa6"]
+_surfaces = [{
+"aabb": AABB(-0.42, 0.246288, -1, 0.84, 9.99868e-06, 2),
+"format": 4097,
+"index_count": 12,
+"index_data": PackedByteArray(1, 0, 3, 0, 2, 0, 1, 0, 0, 0, 3, 0, 5, 0, 7, 0, 4, 0, 5, 0, 6, 0, 7, 0),
+"name": "Material",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(144, 194, 117, 190, 220, 50, 124, 62, 0, 0, 128, 191, 62, 10, 215, 190, 220, 50, 124, 62, 0, 0, 128, 191, 62, 10, 215, 190, 220, 50, 124, 62, 0, 0, 128, 63, 144, 194, 117, 190, 220, 50, 124, 62, 0, 0, 128, 63, 144, 194, 117, 62, 220, 50, 124, 62, 0, 0, 128, 191, 62, 10, 215, 62, 220, 50, 124, 62, 0, 0, 128, 191, 62, 10, 215, 62, 220, 50, 124, 62, 0, 0, 128, 63, 144, 194, 117, 62, 220, 50, 124, 62, 0, 0, 128, 63)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mjk1w"]
+resource_name = "road_Nav_Cube006"
+_surfaces = [{
+"aabb": AABB(-0.42, 0.246288, -1, 0.84, 9.99868e-06, 2),
+"attribute_data": PackedByteArray(207, 207, 169, 62, 184, 193, 54, 63, 160, 75, 167, 62, 184, 193, 54, 63, 160, 75, 167, 62, 238, 198, 40, 63, 207, 207, 169, 62, 238, 198, 40, 63, 207, 207, 169, 62, 184, 193, 54, 63, 160, 75, 167, 62, 184, 193, 54, 63, 160, 75, 167, 62, 238, 198, 40, 63, 207, 207, 169, 62, 238, 198, 40, 63),
+"format": 4119,
+"index_count": 12,
+"index_data": PackedByteArray(1, 0, 3, 0, 2, 0, 1, 0, 0, 0, 3, 0, 5, 0, 7, 0, 4, 0, 5, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_uhgis"),
+"name": "Material",
+"primitive": 3,
+"vertex_count": 8,
+"vertex_data": PackedByteArray(144, 194, 117, 190, 220, 50, 124, 62, 0, 0, 128, 191, 255, 127, 255, 255, 255, 255, 255, 63, 62, 10, 215, 190, 220, 50, 124, 62, 0, 0, 128, 191, 255, 127, 255, 255, 255, 255, 255, 63, 62, 10, 215, 190, 220, 50, 124, 62, 0, 0, 128, 63, 255, 127, 255, 255, 255, 255, 255, 63, 144, 194, 117, 190, 220, 50, 124, 62, 0, 0, 128, 63, 255, 127, 255, 255, 255, 255, 255, 63, 144, 194, 117, 62, 220, 50, 124, 62, 0, 0, 128, 191, 255, 127, 255, 255, 0, 0, 255, 191, 62, 10, 215, 62, 220, 50, 124, 62, 0, 0, 128, 191, 255, 127, 255, 255, 0, 0, 255, 191, 62, 10, 215, 62, 220, 50, 124, 62, 0, 0, 128, 63, 255, 127, 255, 255, 0, 0, 255, 191, 144, 194, 117, 62, 220, 50, 124, 62, 0, 0, 128, 63, 255, 127, 255, 255, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_42aa6")
 
 [node name="Road_Straight" type="StaticBody3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -57,9 +94,17 @@ mesh = SubResource("ArrayMesh_yi441")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_rk7fg")
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Straight"]
-navigation_mesh = SubResource("NavigationMesh_s6233")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_ghv08")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_fylxr")
+
+[node name="Straight_Nav" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("ArrayMesh_mjk1w")
+skeleton = NodePath("")

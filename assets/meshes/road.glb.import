@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://jqi4tqhnjehk"
+uid="uid://bfg0khdgylg3u"
 path="res://.godot/imported/road.glb-5649f7aed033f75f16dd80c0cbd4fe7c.scn"
 
 [deps]
@@ -28,23 +28,5 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:3way": {
-"generate/navmesh": 1
-},
-"PATH:4way": {
-"generate/navmesh": 1
-},
-"PATH:End": {
-"generate/navmesh": 1
-},
-"PATH:Straight": {
-"generate/navmesh": 1
-},
-"PATH:turn90": {
-"generate/navmesh": 1
-}
-}
-}
+_subresources={}
 gltf/embedded_image_handling=1
