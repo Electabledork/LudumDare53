@@ -14,10 +14,17 @@ func _ready() -> void:
 	mat.metallic = 0
 	$base.set_surface_override_material(1, mat)
 	
+	$EngineSound.volume_db = Globals.volume
+	
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	navigation_agent.target_position = $"../DeliveryTruck".position
 
 func _physics_process(delta):
+	var dist_to_player = position.distance_to($"../DeliveryTruck".position)
+	#print(dist_to_player)
+	#if dist_to_player > 100:
+		#queue_free()
+	
 	if !is_alive: return
 	if navigation_agent.is_navigation_finished():return
 	
@@ -33,7 +40,7 @@ func _physics_process(delta):
 		navigation_agent.set_velocity(new_velocity)
 	else:
 		_on_velocity_computed(new_velocity)
-	rotation.y = move_toward(rotation.y, atan2(velocity.x,velocity.z), delta * 2)
+	rotation.y = move_toward(rotation.y, atan2(velocity.x,velocity.z), delta * 1)
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	if !is_alive: return

@@ -31,6 +31,9 @@ var can_deliver = false
 
 var engine_pitch = 0.3
 
+func _ready():
+	$EngineSound.volume_db = Globals.volume
+
 func _process(delta):
 	if !is_alive: return
 
@@ -108,7 +111,6 @@ func _physics_process(delta):
 func update_sound(delta):
 	engine_pitch = speed / 20 * 0.5 + 0.4
 	engine_pitch = clampf(engine_pitch, 0.4, 1)
-	print(engine_pitch)
 	engine_sound.pitch_scale = engine_pitch
 
 func show_smoke():

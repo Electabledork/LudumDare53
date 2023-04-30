@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dkxb5tt5onphw"]
+[gd_scene load_steps=18 format=3 uid="uid://dkxb5tt5onphw"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_4y2er"]
 [ext_resource type="Material" uid="uid://cuj77qtkacxbg" path="res://assets/materials/truck.tres" id="1_j5xmy"]
+[ext_resource type="AudioStream" uid="uid://cx58saoaiplii" path="res://assets/sounds/Engine.wav" id="3_11xsw"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_n2bks"]
 _surfaces = [{
@@ -142,7 +143,7 @@ material = SubResource("StandardMaterial3D_2ek78")
 size = Vector2(1, 1)
 orientation = 2
 
-[node name="Car" type="CharacterBody3D" groups=["no_damage"]]
+[node name="Car" type="CharacterBody3D"]
 script = ExtResource("1_4y2er")
 
 [node name="Wheel" type="MeshInstance3D" parent="."]
@@ -192,3 +193,11 @@ randomness = 0.57
 visibility_aabb = AABB(-1.15138, -3.50082, -1.41988, 2.30275, 7.00166, 2.14837)
 process_material = SubResource("ParticleProcessMaterial_785ts")
 draw_pass_1 = SubResource("PlaneMesh_e2pon")
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_11xsw")
+volume_db = -10.0
+unit_size = 1.0
+max_db = -10.0
+pitch_scale = 0.4
+autoplay = true

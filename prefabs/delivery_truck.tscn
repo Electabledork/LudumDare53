@@ -279,6 +279,10 @@ script = ExtResource("2_jabso")
 
 [node name="PlayerHUD" parent="SpringArm3D/Camera3D" instance=ExtResource("3_vpekn")]
 
+[node name="AudioListener3D" type="AudioListener3D" parent="SpringArm3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0)
+current = true
+
 [node name="FrontLeft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 0.444782, -1.69126)
 use_as_steering = true
@@ -398,7 +402,7 @@ material = SubResource("StandardMaterial3D_m0pe7")
 
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_21i1w")
-volume_db = -5.0
+volume_db = -10.0
 pitch_scale = 0.4
 autoplay = true
 

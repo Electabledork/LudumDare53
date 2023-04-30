@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://doi2qu3ww8vy4"]
+[gd_scene load_steps=11 format=3 uid="uid://doi2qu3ww8vy4"]
 
-[ext_resource type="Texture2D" uid="uid://datsppqy7iblr" path="res://assets/meshes/road_aap-64.png" id="1_avgub"]
 [ext_resource type="Material" uid="uid://b0rtd6mp42q7f" path="res://assets/materials/road.tres" id="2_55s51"]
 [ext_resource type="Texture2D" uid="uid://binoccbgekhp7" path="res://assets/meshes/road_Nav_aap-64.png" id="3_us7h2"]
 
@@ -8,7 +7,6 @@
 resource_name = "Material"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_avgub")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7y865"]
@@ -85,7 +83,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5d0gq")
 
-[node name="Road_4way" type="StaticBody3D"]
+[node name="Road_4way" type="StaticBody3D" groups=["no_damage"]]
 
 [node name="3way" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0)
