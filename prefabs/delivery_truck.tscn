@@ -273,6 +273,7 @@ spring_length = 10.0
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 4.47035e-08, 1, 0, 4.76837e-07, 6.72)
 top_level = true
+cull_mask = 1048063
 doppler_tracking = 1
 current = true
 script = ExtResource("2_jabso")
@@ -361,6 +362,7 @@ skeleton = NodePath("")
 
 [node name="TireSmokeLeft" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.886742, 0.561114, 2.59518)
+visibility_range_end = 900.0
 emitting = false
 amount = 20
 lifetime = 2.0
@@ -372,6 +374,7 @@ draw_pass_1 = SubResource("PlaneMesh_bcwa4")
 
 [node name="TireSmokeRight" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.892816, 0.561114, 2.59518)
+visibility_range_end = 900.0
 emitting = false
 amount = 20
 lifetime = 2.0
@@ -383,6 +386,7 @@ draw_pass_1 = SubResource("PlaneMesh_bcwa4")
 
 [node name="EngineSmoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0767154, 1.26118, -2.66989)
+visibility_range_end = 900.0
 emitting = false
 amount = 30
 lifetime = 2.0
@@ -404,7 +408,6 @@ material = SubResource("StandardMaterial3D_m0pe7")
 stream = ExtResource("7_21i1w")
 volume_db = -10.0
 pitch_scale = 0.4
-autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

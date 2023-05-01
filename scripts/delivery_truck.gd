@@ -79,10 +79,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("brake"):
 		if engine_force > 0:
 			brake_val = 1
-			throttle_val =  move_toward(throttle_val, 0, delta * 3)
+			throttle_val = move_toward(throttle_val, 0, delta * 3)
 		else:
 			reverse = true
-			throttle_val =  move_toward(throttle_val, -0.25, delta)
+			throttle_val = -0.5
 	else:
 		brake_val = 0.0
 		reverse = false
@@ -135,6 +135,7 @@ func die():
 	brake_val = 1
 	steer_target = 0
 	engine_force = 0
+	speed = 0
 	clear_delivery()
 	stop_smoke() 
 	$EngineSmoke.emitting = false

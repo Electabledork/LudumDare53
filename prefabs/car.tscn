@@ -147,45 +147,42 @@ orientation = 2
 script = ExtResource("1_4y2er")
 
 [node name="Wheel" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0.488099, 0, 0, 0, -0.488099, -0.488099, 0, 0, 0.862265, 0.487847, 1.86992)
+transform = Transform3D(-8.53419e-08, 0.488099, 0, 0, 0, -0.488099, -0.488099, -8.53419e-08, 0, 0.862265, 0.487847, 1.86992)
 layers = 2
 mesh = SubResource("ArrayMesh_bnad4")
 skeleton = NodePath("")
 
 [node name="Wheel2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0.488099, 0, 0, 0, -0.488099, -0.488099, 0, 0, 0.862265, 0.487847, -1.39876)
+transform = Transform3D(-8.53419e-08, 0.488099, 0, 0, 0, -0.488099, -0.488099, -8.53419e-08, 0, 0.862265, 0.487847, -1.39876)
 layers = 2
 mesh = SubResource("ArrayMesh_bnad4")
 skeleton = NodePath("")
 
 [node name="Wheel3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.13355e-08, -0.488099, 0, 0.488099, -2.13355e-08, 0, 0, 0, 0.488099, -0.848487, 0.487847, 1.86992)
+transform = Transform3D(-2.13355e-08, -0.488099, 8.53419e-08, 0.488099, -2.13355e-08, 0, 3.73042e-15, 8.53419e-08, 0.488099, -0.848487, 0.487847, 1.86992)
 layers = 2
 mesh = SubResource("ArrayMesh_bnad4")
 skeleton = NodePath("")
 
 [node name="Wheel4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.13355e-08, -0.488099, 0, 0.488099, -2.13355e-08, 0, 0, 0, 0.488099, -0.848487, 0.487847, -1.39876)
+transform = Transform3D(-2.13355e-08, -0.488099, 8.53419e-08, 0.488099, -2.13355e-08, 0, 3.73042e-15, 8.53419e-08, 0.488099, -0.848487, 0.487847, -1.39876)
 layers = 2
 mesh = SubResource("ArrayMesh_bnad4")
 skeleton = NodePath("")
 
 [node name="base" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423109, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.79397e-08, 0.423109, 5.96046e-08)
 layers = 2
 mesh = SubResource("ArrayMesh_a5rux")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18698, 0.303596)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2.42144e-08, 1.18698, 0.303596)
 shape = SubResource("BoxShape3D_nwcva")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-avoidance_enabled = true
-debug_enabled = true
-
 [node name="EngineSmoke" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0767154, 1.26118, 2.51653)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.0767158, 1.26118, 2.51653)
+visibility_range_end = 900.0
 emitting = false
 amount = 60
 lifetime = 2.0
@@ -195,9 +192,10 @@ process_material = SubResource("ParticleProcessMaterial_785ts")
 draw_pass_1 = SubResource("PlaneMesh_e2pon")
 
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.79397e-08, 0, 5.96046e-08)
 stream = ExtResource("3_11xsw")
-volume_db = -10.0
-unit_size = 1.0
-max_db = -10.0
-pitch_scale = 0.4
+unit_size = 8.0
+pitch_scale = 0.7
 autoplay = true
+max_distance = 100.0
+attenuation_filter_cutoff_hz = 20500.0

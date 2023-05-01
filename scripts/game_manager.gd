@@ -3,18 +3,22 @@ extends Node3D
 var delivery_loc_prefab = preload("res://prefabs/delivery_location.tscn")
 var car_prefab = preload("res://prefabs/car.tscn")
 
-@export var number_of_deliveries = 10
+@export var number_of_deliveries = 1
 var delivery_locations = []
 
 @export var max_cars = 100
 var spawned_cars = []
+
+var game_time = 0
 
 func _ready():
 	generate_deliveries()
 	generate_cars()
 	
 func _process(delta):
-	if delivery_locations.size() <= 0:
+	if delivery_locations.size() > 0:
+		game_time += delta
+	else:
 		game_over()
 
 func _unhandled_input(event):
@@ -40,13 +44,17 @@ func generate_cars():
 	
 	spawns.shuffle()
 	spawns.resize(spawns.size()/2)
-			
+	
+	max_cars = spawns.size()
+	print(max_cars)
 	for i in max_cars:
 		var inst = car_prefab.instantiate()
 		var loc = spawns.pick_random()
 		spawns.erase(loc)
 		inst.position = loc.global_position
-		inst.rotation = loc.rotation
+		inst.position.y = 0
+		inst.rotation = loc.rotation + loc.get_parent().rotation
+		inst.current_node = loc
 		spawned_cars.append(inst)
 		add_child(inst)
 

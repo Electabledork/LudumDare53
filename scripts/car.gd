@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
-@export var movement_speed: float = 5.0
-@onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
+@export var movement_speed: float = 10.0
 
 var is_alive = true
+var current_node = null
 
 func _ready() -> void:
 	var mat = StandardMaterial3D.new()
@@ -15,41 +15,31 @@ func _ready() -> void:
 	$base.set_surface_override_material(1, mat)
 	
 	$EngineSound.volume_db = Globals.volume
-	
-	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
-	navigation_agent.target_position = $"../DeliveryTruck".position
 
 func _physics_process(delta):
-	var dist_to_player = position.distance_to($"../DeliveryTruck".position)
-	#print(dist_to_player)
-	#if dist_to_player > 100:
-		#queue_free()
-	
-	if !is_alive: return
-	if navigation_agent.is_navigation_finished():return
+	if !is_alive: 
+		if position.distance_to($"../DeliveryTruck".global_position) > 100:
+			queue_free()
+		return
 	
 	for index in range(get_slide_collision_count()):
 		var collision = get_slide_collision(index)
 		if !collision.get_collider().is_in_group("no_damage"):
 			die()
-
-	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-	var current_agent_position: Vector3 = global_position
-	var new_velocity: Vector3 = (next_path_position - current_agent_position).normalized() * movement_speed
-	if navigation_agent.avoidance_enabled:
-		navigation_agent.set_velocity(new_velocity)
-	else:
-		_on_velocity_computed(new_velocity)
-	rotation.y = move_toward(rotation.y, atan2(velocity.x,velocity.z), delta * 1)
-
-func _on_velocity_computed(safe_velocity: Vector3):
-	if !is_alive: return
-	velocity = safe_velocity
-	move_and_slide()
 	
+	if current_node != null && current_node.next_node != null:
+		var next_node = current_node.next_node
+		#print(position.distance_to(next_node.global_position))
+		if position.distance_to(next_node.global_position) < 1:
+			current_node = next_node
+		var new_vel = (next_node.global_position - position).normalized() * movement_speed
+		velocity = new_vel
+		move_and_slide()
+	rotation.y = atan2(velocity.x, velocity.z)
+	#rotation.y = move_toward(rotation.y, atan2(velocity.x, velocity.z), delta * 3)
+
 func die():
 	is_alive = false
 	velocity = Vector3.ZERO
-	navigation_agent.set_velocity(velocity)
-	navigation_agent.target_position = position
 	$EngineSmoke.emitting = true
+	$EngineSound.stop()
