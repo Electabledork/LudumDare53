@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://doi2qu3ww8vy4"]
+[gd_scene load_steps=8 format=3 uid="uid://doi2qu3ww8vy4"]
 
 [ext_resource type="Material" uid="uid://b0rtd6mp42q7f" path="res://assets/materials/road.tres" id="2_55s51"]
+[ext_resource type="Script" path="res://scripts/road_path.gd" id="2_uodgn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63uxh"]
 resource_name = "Material"
@@ -41,6 +42,8 @@ shadow_mesh = SubResource("ArrayMesh_7y865")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_70n65"]
 data = PackedVector3Array(1, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.75, 1, 1, 0.75, 1, 1, 1, 0.75, 1, 1, 0.75, 1, -0.75, 0.75, 0.2463, -1, 0.75, 1, -1, 0.75, 1, -0.75, 0.75, 0.2463, -0.75, 0.75, 0.2463, -1, -1, 1, 0.75, -0.75, 1, 1, -1, 1, 1, -1, 1, 0.75, -0.75, 1, 0.75, -0.75, 1, 1, -0.75, 1, -0.75, -0.75, 0.2463, -1, -0.75, 0.2463, -0.75, -0.75, 1, -0.75, -0.75, 1, -1, -0.75, 0.2463, -1, 0.75, 0.2463, -0.75, 1, 0.2463, 0, 0.75, 0.2463, 0, 0.75, 0.2463, -0.75, 1, 0.2463, -0.75, 1, 0.2463, 0, -0.75, 0.2463, -1, 0, 0.2463, -0.75, -0.75, 0.2463, -0.75, -0.75, 0.2463, -1, 0, 0.2463, -1, 0, 0.2463, -0.75, -1, 1, -1, -0.75, 1, -0.75, -1, 1, -0.75, -1, 1, -1, -0.75, 1, -1, -0.75, 1, -0.75, 0.75, 0.2463, -1, 0, 0.2463, -0.75, 0, 0.2463, -1, 0.75, 0.2463, -1, 0.75, 0.2463, -0.75, 0, 0.2463, -0.75, 1, 1, -1, 0.75, 1, -0.75, 0.75, 1, -1, 1, 1, -1, 1, 1, -0.75, 0.75, 1, -0.75, -0.75, 0.2463, 0, 0, 0.2463, 0.75, -0.75, 0.2463, 0.75, -0.75, 0.2463, 0, 0, 0.2463, 0, 0, 0.2463, 0.75, -0.75, 0.2463, 0.75, -1, 1, 0.75, -1, 0.2463, 0.75, -0.75, 0.2463, 0.75, -0.75, 1, 0.75, -1, 1, 0.75, -0.75, 0.2463, 0.75, -1, 0.2463, 0, -0.75, 0.2463, 0, -0.75, 0.2463, 0.75, -1, 0.2463, 0.75, -1, 0.2463, 0, 0.75, 0.2463, 0, 0, 0.2463, 0.75, 0, 0.2463, 0, 0.75, 0.2463, 0, 0.75, 0.2463, 0.75, 0, 0.2463, 0.75, 0.75, 0.2463, -0.75, 0, 0.2463, 0, 0, 0.2463, -0.75, 0.75, 0.2463, -0.75, 0.75, 0.2463, 0, 0, 0.2463, 0, -0.75, 0.2463, 0, -1, 0.2463, -0.75, -0.75, 0.2463, -0.75, -0.75, 0.2463, 0, -1, 0.2463, 0, -1, 0.2463, -0.75, -0.75, 0.2463, -0.75, 0, 0.2463, 0, -0.75, 0.2463, 0, -0.75, 0.2463, -0.75, 0, 0.2463, -0.75, 0, 0.2463, 0, 0.75, 0.2463, 0, 1, 0.2463, 0.75, 0.75, 0.2463, 0.75, 0.75, 0.2463, 0, 1, 0.2463, 0, 1, 0.2463, 0.75, -0.75, 0.2463, -0.75, -1, 1, -0.75, -0.75, 1, -0.75, -0.75, 0.2463, -0.75, -1, 0.2463, -0.75, -1, 1, -0.75, 0.75, 0.2463, -0.75, 1, 1, -0.75, 1, 0.2463, -0.75, 0.75, 0.2463, -0.75, 0.75, 1, -0.75, 1, 1, -0.75, 0.75, 0.2463, 0.75, 1, 1, 0.75, 0.75, 1, 0.75, 0.75, 0.2463, 0.75, 1, 0.2463, 0.75, 1, 1, 0.75, -0.75, 0.2463, 0.75, 0.75, 1, 0.75, -0.75, 1, 0.75, 0.75, 1, 0.75, 0, 0.2463, 0.75, 0.75, 0.2463, 0.75, 0.75, 1, 0.75, -0.75, 0.2463, 0.75, 0, 0.2463, 0.75, -0.75, 1, 0.75, 0.75, 1, 1, 0.75, 1, 0.75, -0.75, 1, 0.75, -0.75, 1, 1, 0.75, 1, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftk64"]
+
 [node name="Road_4way" type="StaticBody3D" groups=["no_damage"]]
 
 [node name="3way" type="MeshInstance3D" parent="."]
@@ -52,3 +55,39 @@ surface_material_override/0 = ExtResource("2_55s51")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_70n65")
+
+[node name="LeftLane" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74846e-07, 0, 4)
+collision_layer = 2147483648
+collision_mask = 2147483648
+script = ExtResource("2_uodgn")
+
+[node name="box" type="CSGBox3D" parent="LeftLane"]
+layers = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftLane"]
+shape = SubResource("BoxShape3D_ftk64")
+
+[node name="RayCast3D" type="RayCast3D" parent="LeftLane"]
+target_position = Vector3(0, 0, 20)
+collision_mask = 2147483648
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 1, 0.176471, 1)
+
+[node name="RightLane" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.74846e-07, 0, -4)
+collision_layer = 2147483648
+collision_mask = 2147483648
+script = ExtResource("2_uodgn")
+
+[node name="box" type="CSGBox3D" parent="RightLane"]
+layers = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightLane"]
+shape = SubResource("BoxShape3D_ftk64")
+
+[node name="RayCast3D" type="RayCast3D" parent="RightLane"]
+target_position = Vector3(0, 0, 20)
+collision_mask = 2147483648
+collide_with_areas = true
+debug_shape_custom_color = Color(0, 1, 0.176471, 1)

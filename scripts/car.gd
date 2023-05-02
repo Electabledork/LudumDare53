@@ -13,12 +13,11 @@ func _ready() -> void:
 	mat.metallic_specular = 0
 	mat.metallic = 0
 	$base.set_surface_override_material(1, mat)
-	
-	$EngineSound.volume_db = Globals.volume
 
 func _physics_process(delta):
 	if !is_alive: 
 		if position.distance_to($"../DeliveryTruck".global_position) > 100:
+			$base.set_surface_override_material(1, null)
 			queue_free()
 		return
 	
@@ -28,18 +27,21 @@ func _physics_process(delta):
 			die()
 	
 	if current_node != null && current_node.next_node != null:
+		if $RayCast3D.is_colliding() || $RayCast3D2.is_colliding() || $RayCast3D3.is_colliding(): return
 		var next_node = current_node.next_node
-		#print(position.distance_to(next_node.global_position))
 		if position.distance_to(next_node.global_position) < 1:
 			current_node = next_node
 		var new_vel = (next_node.global_position - position).normalized() * movement_speed
 		velocity = new_vel
 		move_and_slide()
-	rotation.y = atan2(velocity.x, velocity.z)
-	#rotation.y = move_toward(rotation.y, atan2(velocity.x, velocity.z), delta * 3)
+		rotation.y = atan2(velocity.x, velocity.z)
 
 func die():
 	is_alive = false
 	velocity = Vector3.ZERO
 	$EngineSmoke.emitting = true
 	$EngineSound.stop()
+
+
+func _on_tree_exiting():
+	$base.set_surface_override_material(1, null)

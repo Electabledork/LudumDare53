@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cfpcbdm6axxd6"]
+[gd_scene load_steps=35 format=3 uid="uid://vf3yrj1n7nni"]
 
 [ext_resource type="Script" path="res://scripts/delivery_truck.gd" id="1_8kdf2"]
 [ext_resource type="Material" uid="uid://cuj77qtkacxbg" path="res://assets/materials/truck.tres" id="2_d851w"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dd6cfxwutjx5d" path="res://prefabs/player_hud.tscn" id="3_vpekn"]
 [ext_resource type="Texture2D" uid="uid://cgmomu2wewcr7" path="res://assets/ui/player_map_loc.png" id="6_yj4le"]
 [ext_resource type="AudioStream" uid="uid://cx58saoaiplii" path="res://assets/sounds/Engine.wav" id="7_21i1w"]
+[ext_resource type="AudioStream" uid="uid://dv04afu64g5pa" path="res://assets/sounds/glass.wav" id="7_f4gbn"]
+[ext_resource type="AudioStream" uid="uid://ccbqeygwwj0p7" path="res://assets/sounds/crash.wav" id="8_2gpwc"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tuh0k"]
 points = PackedVector3Array(-1, -0.0593406, 2.57596, 1, -0.0593406, 2.57596, -1, 0.136998, 2.70687, -1, -0.0426095, -2.17527, 1, 0.136998, 2.70687, 1, -0.0426095, -2.17527, -0.994518, 0.499036, 2.74077, -1, 0.999962, 2.03669, -1, -7.60965e-05, -2.46629, 0.994323, 0.499036, 2.74077, 1, 0.999962, 2.03669, 1, -7.60965e-05, -2.46629, -0.989037, 0.860872, 2.63594, -1, 2, 0.999869, -0.920125, 0.159172, -2.58677, -1, 2, -2.46629, 0.988841, 0.860872, 2.63594, 1, 2, 0.999869, 0.91993, 0.159172, -2.58677, 1, 2, -2.46629, -0.920125, 1.93146, -2.58677, 0.91993, 1.93146, -2.58677)
@@ -108,7 +110,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4o43m")
 
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_1032m"]
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_iqaaw"]
+length = 10.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5kalm"]
 _surfaces = [{
@@ -223,16 +226,16 @@ emission = Color(0.94902, 0, 0, 1)
 emission_energy_multiplier = 16.0
 
 [node name="DeliveryTruck" type="VehicleBody3D" groups=["player"]]
-mass = 12000.0
+mass = 100.0
 center_of_mass_mode = 1
 continuous_cd = true
-max_contacts_reported = 10
+max_contacts_reported = 100
 contact_monitor = true
 freeze_mode = 1
 angular_damp = 5.0
 script = ExtResource("1_8kdf2")
-steer_speed = 2.5
-decel_rate = 0.75
+brake_force = 10.0
+handbrake_multiplier = 4.0
 crash_damage_modifier = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -267,7 +270,7 @@ skeleton = NodePath("")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 4.25881, -1.63157)
-shape = SubResource("SeparationRayShape3D_1032m")
+shape = SubResource("SeparationRayShape3D_iqaaw")
 spring_length = 10.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
@@ -406,7 +409,15 @@ material = SubResource("StandardMaterial3D_m0pe7")
 
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_21i1w")
-volume_db = -10.0
+pitch_scale = 0.4
+autoplay = true
+
+[node name="Crash1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_f4gbn")
+pitch_scale = 0.4
+
+[node name="Crash2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_2gpwc")
 pitch_scale = 0.4
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

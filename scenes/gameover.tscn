@@ -1,0 +1,165 @@
+[gd_scene load_steps=12 format=3 uid="uid://b644284a4lav"]
+
+[ext_resource type="Texture2D" uid="uid://cdcop3g51jtcr" path="res://assets/ui/menu_bkg.png" id="1_7k5cr"]
+[ext_resource type="Script" path="res://scripts/ui/gameover.gd" id="1_sohuq"]
+[ext_resource type="FontFile" uid="uid://bdb7ny1ighkv6" path="res://assets/fonts/HVD_Bodedo.ttf" id="2_4ijw2"]
+[ext_resource type="Texture2D" uid="uid://c1toy455v7bss" path="res://assets/ui/button.png" id="3_inuai"]
+[ext_resource type="FontFile" uid="uid://dmhaiysftxft5" path="res://assets/fonts/PrintBold.otf" id="3_klkaf"]
+[ext_resource type="FontFile" uid="uid://bobmq0ibx2w3q" path="res://assets/fonts/PrintClearly.otf" id="4_sorka"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_csn1k"]
+font = ExtResource("2_4ijw2")
+font_size = 60
+font_color = Color(0.705882, 0.12549, 0.164706, 0.87451)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yx7bv"]
+font = ExtResource("3_klkaf")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xm3q"]
+font = ExtResource("3_klkaf")
+font_size = 64
+
+[sub_resource type="FontVariation" id="FontVariation_vy6a8"]
+base_font = ExtResource("4_sorka")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kgqoj"]
+font = SubResource("FontVariation_vy6a8")
+font_size = 60
+font_color = Color(0.34902, 0.756863, 0.207843, 1)
+outline_color = Color(0.301961, 0.647059, 0.184314, 1)
+
+[node name="Gameover" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sohuq")
+
+[node name="BKG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7k5cr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_csn1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HighscoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "New Highscore"
+label_settings = SubResource("LabelSettings_yx7bv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Time"
+label_settings = SubResource("LabelSettings_yx7bv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "0"
+label_settings = SubResource("LabelSettings_4xm3q")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="hbox" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+
+[node name="resumebutton" type="TextureButton" parent="MarginContainer/hbox"]
+modulate = Color(1, 1, 1, 0.917647)
+texture_filter = 2
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 9
+texture_normal = ExtResource("3_inuai")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/hbox/resumebutton"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = SubResource("LabelSettings_kgqoj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exitbutton" type="TextureButton" parent="MarginContainer/hbox"]
+modulate = Color(1, 1, 1, 0.917647)
+texture_filter = 2
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 9
+texture_normal = ExtResource("3_inuai")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/hbox/exitbutton"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_kgqoj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/hbox/resumebutton" to="." method="_on_resumebutton_pressed"]
+[connection signal="pressed" from="MarginContainer/hbox/exitbutton" to="." method="_on_exitbutton_pressed"]

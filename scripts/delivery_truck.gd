@@ -31,9 +31,6 @@ var can_deliver = false
 
 var engine_pitch = 0.3
 
-func _ready():
-	$EngineSound.volume_db = Globals.volume
-
 func _process(delta):
 	if !is_alive: return
 
@@ -49,15 +46,11 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if !is_alive: return
-	
 	if event.is_action_pressed("interact"):
 		if can_deliver && speed <= 1.0:
 			var delivered = game_manager.deliver(delivery_location)
 			if delivered:
 				clear_delivery()
-		
-	if event.is_action_pressed("map"):
-		pass
 
 func _physics_process(delta):
 	if !is_alive: return
@@ -147,6 +140,9 @@ func _on_body_entered(body):
 	health -= linear_velocity.length() * crash_damage_modifier
 	can_take_damage = false
 	$DamageTimer.start()
+	$Crash1.play()
+	$Crash2.play()
+
 
 func _on_damage_timer_timeout():
 	can_take_damage = true

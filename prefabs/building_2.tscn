@@ -74,3 +74,5 @@ shape = SubResource("BoxShape3D_e28pw")
 
 [node name="DeliveryLocation" type="Marker3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 15, 0, 0, 0, 10, 0, 0, -16)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

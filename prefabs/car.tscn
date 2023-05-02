@@ -194,8 +194,28 @@ draw_pass_1 = SubResource("PlaneMesh_e2pon")
 [node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -2.79397e-08, 0, 5.96046e-08)
 stream = ExtResource("3_11xsw")
-unit_size = 8.0
+unit_size = 3.0
 pitch_scale = 0.7
 autoplay = true
 max_distance = 100.0
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+target_position = Vector3(0, 0, 5)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+target_position = Vector3(1.5, 0, 3)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+target_position = Vector3(-1.5, 0, 3)
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

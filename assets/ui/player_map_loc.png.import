@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgmomu2wewcr7"
-path.s3tc="res://.godot/imported/player_map_loc.png-7eeb2fde14a1565ae6f4171f36e8c319.s3tc.ctex"
+path="res://.godot/imported/player_map_loc.png-7eeb2fde14a1565ae6f4171f36e8c319.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/ui/player_map_loc.png"
-dest_files=["res://.godot/imported/player_map_loc.png-7eeb2fde14a1565ae6f4171f36e8c319.s3tc.ctex"]
+dest_files=["res://.godot/imported/player_map_loc.png-7eeb2fde14a1565ae6f4171f36e8c319.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

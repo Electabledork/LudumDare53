@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="LD53"
-run/main_scene="res://scenes/game_world.tscn"
+config/name="Expedited"
+run/main_scene="res://scenes/mainmenu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -22,6 +22,13 @@ buses/default_bus_layout="res://audio/main_bus.tres"
 [autoload]
 
 Globals="*res://scripts/autoload/Globals.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=768
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -67,6 +74,11 @@ pause={
 map={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":77,"key_label":0,"unicode":109,"echo":false,"script":null)
+]
+}
+reset={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"echo":false,"script":null)
 ]
 }
 

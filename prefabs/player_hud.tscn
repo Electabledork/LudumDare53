@@ -1,10 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd6cfxwutjx5d"]
+[gd_scene load_steps=30 format=3 uid="uid://dd6cfxwutjx5d"]
 
 [ext_resource type="Script" path="res://scripts/ui/player_hud.gd" id="1_wiwxi"]
+[ext_resource type="Texture2D" uid="uid://df0o658rch85q" path="res://assets/ui/crate.png" id="2_1myw7"]
 [ext_resource type="Texture2D" uid="uid://gfujndo0umr1" path="res://assets/ui/speedometer_bkg.png" id="2_8af34"]
+[ext_resource type="Texture2D" uid="uid://dhurb7p6h4ilw" path="res://assets/ui/hp_bar_bkg.png" id="2_aakbu"]
 [ext_resource type="Texture2D" uid="uid://c64wo8wqq2kqd" path="res://assets/ui/speedometer_needle.png" id="3_m3a3q"]
+[ext_resource type="Texture2D" uid="uid://bjgkx1fbd0g17" path="res://assets/ui/hp_bar_fill.png" id="3_yh2jh"]
+[ext_resource type="Texture2D" uid="uid://cdcop3g51jtcr" path="res://assets/ui/menu_bkg.png" id="4_arife"]
+[ext_resource type="FontFile" uid="uid://bdb7ny1ighkv6" path="res://assets/fonts/HVD_Bodedo.ttf" id="4_skp7q"]
+[ext_resource type="FontFile" uid="uid://dmhaiysftxft5" path="res://assets/fonts/PrintBold.otf" id="6_6x3ko"]
+[ext_resource type="Texture2D" uid="uid://c1toy455v7bss" path="res://assets/ui/button.png" id="6_b3ho3"]
+[ext_resource type="FontFile" uid="uid://bobmq0ibx2w3q" path="res://assets/fonts/PrintClearly.otf" id="7_7axpx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ew4b3"]
+font = ExtResource("6_6x3ko")
+font_size = 40
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ixq7d"]
+font = ExtResource("6_6x3ko")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i52l1"]
+font = ExtResource("6_6x3ko")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w4arh"]
+font = ExtResource("6_6x3ko")
+font_size = 32
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h3lst"]
+font = ExtResource("4_skp7q")
+font_size = 60
+font_color = Color(0.705882, 0.12549, 0.164706, 0.87451)
+
+[sub_resource type="FontVariation" id="FontVariation_p6odl"]
+base_font = ExtResource("7_7axpx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_gekdm"]
+font = SubResource("FontVariation_p6odl")
+font_size = 60
+font_color = Color(0.34902, 0.756863, 0.207843, 1)
+outline_color = Color(0.301961, 0.647059, 0.184314, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_pm33l"]
+base_font = ExtResource("7_7axpx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32vit"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg1ne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws1xg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lc0u7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka2ea"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_grr0m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0db3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rj72l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2r4y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7750"]
+font = ExtResource("7_7axpx")
+font_size = 22
 
 [node name="PlayerHUD" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,30 +85,45 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wiwxi")
 
-[node name="HPBKG" type="ColorRect" parent="."]
-clip_contents = true
+[node name="HPBKG" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 315.0
-offset_bottom = 25.0
-color = Color(0.631373, 0, 0, 1)
+offset_right = 256.0
+offset_bottom = 64.0
+texture = ExtResource("2_aakbu")
+expand_mode = 1
 
-[node name="HPFILL" type="ColorRect" parent="HPBKG"]
-clip_contents = true
+[node name="HPFILL" type="TextureRect" parent="HPBKG"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 251.0
+offset_bottom = 59.0
+texture = ExtResource("3_yh2jh")
+expand_mode = 1
+
+[node name="Deliveries" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0.764706, 0, 1)
+offset_left = -121.0
+offset_bottom = 32.0
+grow_horizontal = 0
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-offset_top = 42.0
-offset_right = 270.0
-offset_bottom = 83.0
-text = "Deliveries: "
+[node name="DeliveriesLabel" type="Label" parent="Deliveries"]
+layout_mode = 2
+text = "10"
+label_settings = SubResource("LabelSettings_ew4b3")
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Deliveries"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = ExtResource("2_1myw7")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="game_time" type="Label" parent="."]
 layout_mode = 1
@@ -47,23 +134,46 @@ offset_left = -135.0
 offset_right = 135.0
 offset_bottom = 41.0
 grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("LabelSettings_ixq7d")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="delivery_hint" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -106.0
-offset_top = -126.0
-offset_right = 106.0
-offset_bottom = -100.0
+offset_left = -163.5
+offset_top = -158.0
+offset_right = 163.5
+offset_bottom = -122.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Press [E] to Deliver Package"
+label_settings = SubResource("LabelSettings_i52l1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="respawn_hint" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -195.0
+offset_right = 125.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press [R] to Respawn"
+label_settings = SubResource("LabelSettings_w4arh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -94,3 +204,194 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(128, 128)
 texture = ExtResource("3_m3a3q")
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BKG" type="TextureRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1500.0
+offset_top = -1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_arife")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PausedLabel" type="Label" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_h3lst")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="vbox" type="HBoxContainer" parent="PauseMenu/MarginContainer"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+
+[node name="resumebutton" type="TextureButton" parent="PauseMenu/MarginContainer/vbox"]
+modulate = Color(1, 1, 1, 0.917647)
+texture_filter = 2
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 9
+texture_normal = ExtResource("6_b3ho3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/vbox/resumebutton"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+label_settings = SubResource("LabelSettings_gekdm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exitbutton" type="TextureButton" parent="PauseMenu/MarginContainer/vbox"]
+modulate = Color(1, 1, 1, 0.917647)
+texture_filter = 2
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_vertical = 9
+texture_normal = ExtResource("6_b3ho3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseMenu/MarginContainer/vbox/exitbutton"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+label_settings = SubResource("LabelSettings_gekdm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resolution" type="OptionButton" parent="PauseMenu/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("FontVariation_pm33l")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_32vit")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dg1ne")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ws1xg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lc0u7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ka2ea")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_grr0m")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_h0db3")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_rj72l")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_q2r4y")
+flat = true
+alignment = 1
+
+[node name="ResolutionLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/Resolution"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 0
+offset_left = -101.0
+offset_right = -14.0
+offset_bottom = 26.0
+text = "Resolution:"
+label_settings = SubResource("LabelSettings_p7750")
+vertical_alignment = 1
+
+[node name="Borderless" type="CheckButton" parent="PauseMenu/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="BorderlessLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/Borderless"]
+layout_mode = 0
+offset_left = -102.0
+offset_right = -10.0
+offset_bottom = 26.0
+text = "Borderless: "
+label_settings = SubResource("LabelSettings_p7750")
+vertical_alignment = 1
+
+[node name="FullScreen" type="CheckButton" parent="PauseMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Fullscreen" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/FullScreen"]
+layout_mode = 0
+offset_left = -97.0
+offset_right = -5.0
+offset_bottom = 26.0
+text = "Fullscreen: "
+label_settings = SubResource("LabelSettings_p7750")
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="PauseMenu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 26)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+[node name="VolumeLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer/Volume"]
+layout_mode = 2
+offset_left = -78.0
+offset_top = -1.0
+offset_right = -10.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Volume: "
+label_settings = SubResource("LabelSettings_p7750")
+vertical_alignment = 1
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/vbox/resumebutton" to="." method="_on_resumebutton_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/vbox/exitbutton" to="." method="_on_exitbutton_pressed"]
+[connection signal="item_selected" from="PauseMenu/MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="toggled" from="PauseMenu/MarginContainer/VBoxContainer/Borderless" to="." method="_on_borderless_toggled"]
+[connection signal="toggled" from="PauseMenu/MarginContainer/VBoxContainer/FullScreen" to="." method="_on_full_screen_toggled"]
+[connection signal="value_changed" from="PauseMenu/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]

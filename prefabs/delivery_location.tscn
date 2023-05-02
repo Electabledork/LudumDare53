@@ -29,6 +29,7 @@ emission = Color(0.0862745, 1, 0, 1)
 emission_energy_multiplier = 16.0
 
 [node name="DeliveryLocation" type="Area3D"]
+collision_layer = 0
 priority = 1.0
 script = ExtResource("1_6h08x")
 

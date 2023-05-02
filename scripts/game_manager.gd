@@ -1,9 +1,12 @@
 extends Node3D
 
+var player_prefab = preload("res://prefabs/delivery_truck.tscn")
 var delivery_loc_prefab = preload("res://prefabs/delivery_location.tscn")
 var car_prefab = preload("res://prefabs/car.tscn")
 
-@export var number_of_deliveries = 1
+var player
+
+@export var number_of_deliveries = 10
 var delivery_locations = []
 
 @export var max_cars = 100
@@ -12,8 +15,11 @@ var spawned_cars = []
 var game_time = 0
 
 func _ready():
+	print(Globals.volume)
+	spawn_player()
 	generate_deliveries()
 	generate_cars()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 func _process(delta):
 	if delivery_locations.size() > 0:
@@ -24,6 +30,17 @@ func _process(delta):
 func _unhandled_input(event):
 	if event.is_action_pressed("map"):
 		$MapCam.current = !$MapCam.current
+		
+	if event.is_action_pressed("reset"):
+		if !player.is_alive:
+			spawn_player()
+		
+func spawn_player():
+	if player != null: player.queue_free()
+	var inst = player_prefab.instantiate()
+	inst.position = $Spawn.global_position
+	add_child(inst)
+	player = inst
 
 func generate_deliveries():
 	var possible_locations = $buildings.get_children()
@@ -44,9 +61,7 @@ func generate_cars():
 	
 	spawns.shuffle()
 	spawns.resize(spawns.size()/2)
-	
-	max_cars = spawns.size()
-	print(max_cars)
+
 	for i in max_cars:
 		var inst = car_prefab.instantiate()
 		var loc = spawns.pick_random()
@@ -66,7 +81,9 @@ func deliver(location):
 	return true
 	
 func game_over():
-	print("Congrats")
+	Globals.set_score(game_time)
+	Globals.save_game()
+	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
 
 func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if(get_tree().get_nodes_in_group("player").has(body)):
